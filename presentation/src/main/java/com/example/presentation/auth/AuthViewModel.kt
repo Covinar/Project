@@ -1,6 +1,7 @@
 package com.example.presentation.auth
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.common.Resource
@@ -35,6 +36,10 @@ class AuthViewModel @Inject constructor(
             }
             .flowOn(Dispatchers.Main)
             .launchIn(viewModelScope)
+    }
+
+    fun check(userName: String, password: String): Boolean {
+        return userName.isEmpty() || password.isEmpty()
     }
 
 }
