@@ -1,7 +1,9 @@
-package com.example.presentation
+package com.example.presentation.common
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.presentation.R
 import com.example.presentation.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
