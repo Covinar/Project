@@ -38,7 +38,7 @@ class AuthViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
-    fun check(userName: String, password: String): Boolean {
+    fun checkInputs(userName: String, password: String): Boolean {
         return userName.isEmpty() || password.isEmpty()
     }
 

@@ -27,7 +27,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     private fun listeners() {
         binding.btnSignIn.setOnClickListener {
-            if (viewModel.check(binding.etUsername.text.toString(), binding.etPassword.text.toString())) {
+            if (viewModel.checkInputs(binding.etUsername.text.toString(), binding.etPassword.text.toString())) {
                 Toast.makeText(requireContext(), "Invalid input", Toast.LENGTH_SHORT).show()
             } else {
                 viewModel.signIn(binding.etUsername.text.toString(), binding.etPassword.text.toString())
