@@ -3,4 +3,6 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="sing_in">Sing in</string>
+    <string name="repository_name">Repository name</string>
+    <string name="repository_private">Private</string>
 </resources>

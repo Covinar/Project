@@ -8,4 +8,7 @@ interface ApiService {
     @GET(ApiConstants.AUTH_URL)
     suspend fun singIn(): Response<Unit>
 
+    @GET(ApiConstants.REPO_URL)
+    suspend fun getRepositories()
+
 }
