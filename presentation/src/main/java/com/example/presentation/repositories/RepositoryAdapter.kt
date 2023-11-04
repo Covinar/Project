@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Repository
 import com.example.presentation.R
 
-class RepositoryAdapter(private val items: List<Repository>) : RecyclerView.Adapter<RepositoryViewHolder>() {
+class RepositoryAdapter() : RecyclerView.Adapter<RepositoryViewHolder>() {
+
+    private var items: List<Repository> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,6 +25,12 @@ class RepositoryAdapter(private val items: List<Repository>) : RecyclerView.Adap
         val tvName: AppCompatTextView = holder.itemView.findViewById(R.id.tv_repository_name)
         val tvPrivate: AppCompatTextView = holder.itemView.findViewById(R.id.tv_repository_private)
         tvName.text = repository.name
-        tvPrivate.text = repository.repositoryPrivate
+        tvPrivate.text = repository.repositoryPrivate.toString()
     }
+
+    fun updateItems(items: List<Repository>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
+
 }

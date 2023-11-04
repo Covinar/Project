@@ -1,16 +1,16 @@
 package com.example.domain.usecases
 
 import com.example.domain.common.Resource
-import com.example.domain.gateways.UsersGateway
+import com.example.domain.gateways.AuthGateway
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class AuthUseCaseImpl @Inject constructor(
-    private val usersGateway: UsersGateway
+    private val authGateway: AuthGateway
 ) : AuthUseCase {
 
     override fun invoke(token: String): Flow<Resource<Unit>> {
-        return usersGateway.signIn(token)
+        return authGateway.signIn(token)
     }
 
 }
