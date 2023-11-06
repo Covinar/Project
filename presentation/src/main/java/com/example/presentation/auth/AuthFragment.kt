@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.presentation.common.BaseFragment
 import com.example.presentation.databinding.FragmentAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,10 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (viewModel.isSignedIn()){
+            val navController = findNavController()
+            navController.navigate(AuthFragmentDirections.actionAuthFragment2ToMainFragment2())
+        }
         listeners()
     }
 
@@ -31,6 +36,8 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
                 Toast.makeText(requireContext(), "Invalid input", Toast.LENGTH_SHORT).show()
             } else {
                 viewModel.signIn(binding.etUsername.text.toString(), binding.etPassword.text.toString())
+                val navController = findNavController()
+                navController.navigate(AuthFragmentDirections.actionAuthFragment2ToMainFragment2())
             }
         }
     }

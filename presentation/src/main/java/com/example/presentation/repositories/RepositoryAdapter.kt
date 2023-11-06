@@ -2,18 +2,18 @@ package com.example.presentation.repositories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Repository
-import com.example.presentation.R
+import com.example.presentation.databinding.RepositoryItemBinding
 
 class RepositoryAdapter() : RecyclerView.Adapter<RepositoryViewHolder>() {
 
     private var items: List<Repository> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return RepositoryViewHolder(inflater.inflate(R.layout.repository_item, parent, false))
+        return RepositoryViewHolder(
+            RepositoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun getItemCount(): Int {
@@ -21,11 +21,7 @@ class RepositoryAdapter() : RecyclerView.Adapter<RepositoryViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-        val repository = items[position]
-        val tvName: AppCompatTextView = holder.itemView.findViewById(R.id.tv_repository_name)
-        val tvPrivate: AppCompatTextView = holder.itemView.findViewById(R.id.tv_repository_private)
-        tvName.text = repository.name
-        tvPrivate.text = repository.repositoryPrivate.toString()
+       holder.bind(items[position])
     }
 
     fun updateItems(items: List<Repository>) {

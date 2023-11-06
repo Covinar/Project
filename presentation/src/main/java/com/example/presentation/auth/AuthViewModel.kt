@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.common.Resource
 import com.example.domain.usecases.AuthUseCase
+import com.example.domain.usecases.IsSignedInUseCase
+import com.example.domain.usecases.SaveIsSignedInUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
@@ -15,7 +17,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authUseCase: AuthUseCase
+    private val authUseCase: AuthUseCase,
+    private val isSignedInUseCase: IsSignedInUseCase,
+    private val saveIsSignedInUseCase: SaveIsSignedInUseCase
 ) : ViewModel() {
 
     fun signIn(userName: String, password: String) {
@@ -30,12 +34,17 @@ class AuthViewModel @Inject constructor(
                         Log.d("TEST", "Loading")
                     }
                     is Resource.Success ->  {
+                        saveIsSignedInUseCase(true)
                         Log.d("TEST", "Success")
                     }
                 }
             }
             .flowOn(Dispatchers.Main)
             .launchIn(viewModelScope)
+    }
+
+    fun isSignedIn() : Boolean {
+        return isSignedInUseCase()
     }
 
     fun checkInputs(userName: String, password: String): Boolean {

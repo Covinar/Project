@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.data.datasources.local.AuthLocalDataSource
 import com.example.data.datasources.local.AuthLocalDataSourceImpl
+import com.example.data.datasources.local.ReposLocalDataSource
+import com.example.data.datasources.local.ReposLocalDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +25,8 @@ object LocalModule {
 
     @Provides
     fun provideAuthLocalDataSource(sPref: SharedPreferences) : AuthLocalDataSource = AuthLocalDataSourceImpl(sPref)
+
+    @Provides
+    fun provideReposLocalDataSource() : ReposLocalDataSource = ReposLocalDataSourceImpl()
 
 }

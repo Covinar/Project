@@ -4,8 +4,11 @@ import com.example.data.api.ApiConstants
 import com.example.data.api.ApiService
 import com.example.data.api.AuthInterceptor
 import com.example.data.datasources.local.AuthLocalDataSource
+import com.example.data.datasources.local.ReposLocalDataSourceImpl
 import com.example.data.datasources.remote.AuthRemoteDataSource
 import com.example.data.datasources.remote.AuthRemoteDataSourceImpl
+import com.example.data.datasources.remote.ReposRemoteDataSource
+import com.example.data.datasources.remote.ReposRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,5 +46,8 @@ object RemoteModule {
 
     @Provides
     fun provideAuthRemoteDataSource(apiService: ApiService): AuthRemoteDataSource = AuthRemoteDataSourceImpl(apiService)
+
+    @Provides
+    fun provideReposRemoteDataSource(apiService: ApiService): ReposRemoteDataSource = ReposRemoteDataSourceImpl(apiService)
 
 }

@@ -7,4 +7,8 @@ interface AuthGateway {
 
     fun signIn(token: String): Flow<Resource<Unit>>
 
+    fun saveIsSignedIn(isSignedIn: Boolean)
+
+    fun isSignedIn(): Boolean
+
 }

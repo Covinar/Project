@@ -7,8 +7,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_repos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constrainedHeight="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/repository_item"
         tools:itemCount="15"/>

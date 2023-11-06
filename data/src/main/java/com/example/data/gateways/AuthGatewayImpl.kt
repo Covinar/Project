@@ -31,4 +31,13 @@ class AuthGatewayImpl @Inject constructor(
         }
     }
 
+    override fun saveIsSignedIn(isSignedIn: Boolean) {
+        authLocalDataSource.saveIsSignedIn(isSignedIn)
+    }
+
+    override fun isSignedIn(): Boolean {
+        return authLocalDataSource.isSignedIn()
+    }
+
+
 }
