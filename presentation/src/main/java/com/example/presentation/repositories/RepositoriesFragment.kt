@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.presentation.common.BaseFragment
 import com.example.presentation.databinding.FragmentRepositoriesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +35,7 @@ class RepositoriesFragment : BaseFragment<FragmentRepositoriesBinding>() {
 
     private fun setupAdapter() {
         binding.rvRepos.adapter = repoAdapter
+        binding.rvRepos.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
 }
