@@ -6,6 +6,4 @@ data class RepositoryDto(
     val name: String,
     @SerializedName("private")
     val isPrivate: Boolean
-) {
-
-}
+)

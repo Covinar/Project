@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.presentation.common.BaseFragment
 import com.example.presentation.databinding.FragmentRepositoriesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +37,19 @@ class RepositoriesFragment : BaseFragment<FragmentRepositoriesBinding>() {
 
     private fun setupAdapter() {
         binding.rvRepos.adapter = repoAdapter
-        binding.rvRepos.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvRepos.layoutManager = linearLayoutManager
+        binding.rvRepos.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (
+                    linearLayoutManager.findLastVisibleItemPosition() == viewModel.state.value.repositories.lastIndex &&
+                    linearLayoutManager.findLastVisibleItemPosition() > 3
+                ) {
+                    viewModel.onLastItemReached()
+                }
+            }
+        })
     }
 
 }

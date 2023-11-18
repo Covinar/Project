@@ -1,15 +1,19 @@
 package com.example.data.api
 
 import com.example.data.dto.RepositoryDto
-import retrofit2.Response
+import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
 
     @GET(ApiConstants.AUTH_URL)
-    suspend fun singIn(): Response<Unit>
+    fun singIn(): Single<Unit>
 
     @GET(ApiConstants.REPO_URL)
-    suspend fun getRepositories(): Response<List<RepositoryDto>>
+    fun getRepositories(
+        @Query(value = "per_page", encoded = true) perPage: Int,
+        @Query(value = "page", encoded = true) page: Int
+    ): Single<List<RepositoryDto>>
 
 }

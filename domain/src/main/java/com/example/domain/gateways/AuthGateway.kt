@@ -1,11 +1,11 @@
 package com.example.domain.gateways
 
 import com.example.domain.common.Resource
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 
 interface AuthGateway {
 
-    fun signIn(token: String): Flow<Resource<Unit>>
+    fun signIn(token: String): Observable<Resource<Unit>>
 
     fun saveIsSignedIn(isSignedIn: Boolean)
 
