@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size128"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="@dimen/size8"
+    android:background="@color/purple">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_repository_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/text16"
+        android:paddingVertical="@dimen/size4"
+        android:text="@string/repository_name"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_repository_private"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_repository_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingVertical="@dimen/size4"
+        android:textSize="@dimen/text16"
+        android:text="@string/repository_private"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

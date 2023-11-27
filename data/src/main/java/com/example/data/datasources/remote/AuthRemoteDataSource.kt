@@ -1,9 +1,9 @@
 package com.example.data.datasources.remote
 
-import retrofit2.Response
+import io.reactivex.rxjava3.core.Single
 
 interface AuthRemoteDataSource {
 
-    suspend fun singIn(): Response<Unit>
+    fun singIn(): Single<Unit>
 
 }

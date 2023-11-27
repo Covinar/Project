@@ -6,12 +6,15 @@ import com.example.data.api.AuthInterceptor
 import com.example.data.datasources.local.AuthLocalDataSource
 import com.example.data.datasources.remote.AuthRemoteDataSource
 import com.example.data.datasources.remote.AuthRemoteDataSourceImpl
+import com.example.data.datasources.remote.ReposRemoteDataSource
+import com.example.data.datasources.remote.ReposRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
@@ -33,15 +36,19 @@ object RemoteModule {
             .baseUrl(ApiConstants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
     }
 
     @Provides
     fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create<ApiService>()
+        return retrofit.create()
     }
 
     @Provides
     fun provideAuthRemoteDataSource(apiService: ApiService): AuthRemoteDataSource = AuthRemoteDataSourceImpl(apiService)
+
+    @Provides
+    fun provideReposRemoteDataSource(apiService: ApiService): ReposRemoteDataSource = ReposRemoteDataSourceImpl(apiService)
 
 }

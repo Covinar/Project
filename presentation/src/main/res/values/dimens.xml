@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="size128">128dp</dimen>
+    <dimen name="size64">64dp</dimen>
+    <dimen name="size32">32dp</dimen>
     <dimen name="size24">24dp</dimen>
     <dimen name="size12">12dp</dimen>
     <dimen name="size8">8dp</dimen>
+    <dimen name="size4">4dp</dimen>
 
     <dimen name="text8">8sp</dimen>
+    <dimen name="text16">16sp</dimen>
 </resources>

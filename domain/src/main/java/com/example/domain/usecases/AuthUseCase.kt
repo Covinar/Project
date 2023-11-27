@@ -1,10 +1,10 @@
 package com.example.domain.usecases
 
 import com.example.domain.common.Resource
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 
 interface AuthUseCase {
 
-    operator fun invoke(token: String) : Flow<Resource<Unit>>
+    operator fun invoke(token: String) : Observable<Resource<Unit>>
 
 }
